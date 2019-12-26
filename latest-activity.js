@@ -30,7 +30,7 @@ async function main () {
     for await (const post of awaitable(latestStream)) {
       // For each post (one per user), get the latest self-assigned username for the id.
       const id = post.value.author
-      const name = await latestSelfAssignedName(sbot, id)
+      const name = await promisify(sbot.about.socialValue)({ key: 'name', dest: id })
 
       const timestamp = new Date(post.value.timestamp).toISOString()
       const type = post.value.content.type || '(unknown)'
@@ -42,23 +42,4 @@ async function main () {
     console.error('Something went wrong! Is ssb-server running?')
     console.error(`Got error: ${e}`)
   }
-}
-
-async function latestSelfAssignedName (sbot, id) {
-  const aboutStream = pull(
-    sbot.links({
-      source: id,
-      dest: id,
-      rel: 'about',
-      values: true
-    })
-  )
-
-  let name = '(unknown)'
-  for await (const about of awaitable(aboutStream)) {
-    if (about.value.content.name !== undefined) {
-      name = about.value.content.name
-    }
-  }
-  return name
 }
