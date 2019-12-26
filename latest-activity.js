@@ -10,6 +10,9 @@ const ssbClient = promisify(ssbClientCb)
 main().catch(err => console.error(`unhandled top-level exception: ${err}`))
 
 async function main () {
+  const [firstArg] = process.argv.slice(2)
+  const showId = firstArg === '--id'
+
   try {
     const sbot = await ssbClient()
 
@@ -34,7 +37,11 @@ async function main () {
 
       const timestamp = new Date(post.value.timestamp).toISOString()
       const type = post.value.content.type || '(unknown)'
-      console.log(`${id} ${timestamp} (${name}) type: ${type}`) 
+      if (showId) {
+        console.log(`${id} ${timestamp} (${name}) type: ${type}`)
+      } else {
+        console.log(`${timestamp} (${name}) type: ${type}`)
+      }
     }
 
     sbot.close()

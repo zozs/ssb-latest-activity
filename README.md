@@ -15,6 +15,21 @@ Show latest activity of people you follow, useful to, e.g., ensure your pub stil
 
 ```
 [linus@laptop]$ node latest-activity.js
+2019-12-26T11:31:42.134Z (test1) type: vote
+2019-12-26T10:49:48.936Z (zozs) type: git-update
+2019-12-26T06:31:43.431Z (yayayaya) type: vote
+2019-12-25T23:10:58.398Z (test2) type: contact
+2019-12-25T21:00:00.000Z (test3) type: (unknown)
+2019-12-25T17:32:26.452Z (example) type: vote
+2019-12-25T08:30:10.650Z (test5) type: post
+2019-12-15T15:13:46.906Z (ssb.zozs.se) type: contact
+2019-11-27T03:04:43.677Z (The Weekly) type: post
+```
+
+You can also get the long ids by calling the script with `--id`
+
+```
+[linus@laptop]$ node latest-activity.js --id
 @geQl+Lnoch9HdZbOUfiEXWDoanWXEDbGBfSy9/EWOoo=.ed25519 2019-12-26T11:31:42.134Z (test1) type: vote
 @S1h5yat/vRFUJw7ft5+U661/AblIZsdDCA6ZGOb7814=.ed25519 2019-12-26T10:49:48.936Z (zozs) type: post
 @4djb2cUbKMgjp9nIsaXT0YN1/3ksT6wJCvnoG/GMsIU=.ed25519 2019-12-26T06:31:43.431Z (yayayaya) type: vote
