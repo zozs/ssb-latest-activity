@@ -9,7 +9,9 @@
   "author": "Linus Karlsson <ssb@linuskarlsson.se>",
   "license": "ISC",
   "dependencies": {
+    "pull-awaitable": "^1.0.0",
     "pull-flatmap": "0.0.1",
+    "pull-sort": "^1.0.2",
     "ssb-client": "^4.7.9"
   }
 }
